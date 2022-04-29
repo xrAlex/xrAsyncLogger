@@ -2,7 +2,7 @@
 
 namespace xrAsyncLogger
 {
-    public class LogArgs : EventArgs
+    public readonly struct LogArgs
     {
         /// <summary>
         /// Message to write in log
@@ -26,7 +26,7 @@ namespace xrAsyncLogger
 
         public override string ToString()
         {
-            var logMessage = $"{_label} " + $"[{_time:dd MMM yyyy HH:mm: ss\\.fff}] {_message} \r\n";
+            var logMessage = $"{_label} " + $"[{_time:dd.MM.yy HH:mm:ss fff}] {_message} \r\n";
             if (_ex != null)
             {
                 logMessage += $"[{_ex.TargetSite?.DeclaringType}.{_ex.TargetSite?.Name}()] " +
